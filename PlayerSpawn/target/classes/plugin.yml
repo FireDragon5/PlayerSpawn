@@ -1,0 +1,32 @@
+name: PlayerSpawn
+version: '1.0'
+main: me.firedragon5.playerspawn.PlayerSpawn
+api-version: 1.19
+
+
+commands:
+    setspawn:
+
+    spawn:
+
+
+    sethome:
+
+
+    home:
+
+
+    homehelp:
+
+
+    delhome:
+
+
+    setwarp:
+
+
+    homelist:
+
+    warp:
+
+    spawnmenu:
