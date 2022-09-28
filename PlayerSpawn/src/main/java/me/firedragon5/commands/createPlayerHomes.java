@@ -32,7 +32,7 @@ public class createPlayerHomes implements CommandExecutor {
 						player.sendMessage(utils.color("&cYou already have a home with that name!"));
 					} else {
 						playerConfigData.set(args[0], player.getLocation());
-						player.sendMessage(utils.color("&aHome " + args[0] + " has been created!"));
+						player.sendMessage(utils.color("&aHome {" + args[0] + "&a} has been created!"));
 						playerConfigData.set("homeCount", playerConfigData.getInt("homeCount") + 1);
 
 //						Save config

@@ -21,10 +21,14 @@ public class warpTabComplete implements TabCompleter {
 		FileConfiguration serverWarpData = YamlConfiguration.loadConfiguration(serverWarp);
 
 
-		List<String> results = new ArrayList<String>();
 
 		if (args.length == 1){
+			List<String> results = new ArrayList<String>();
+
 			for (String key : serverWarpData.getKeys(false)) {
+				if (key == null) {
+					results.add("No warps found");
+				}else
 				if (!key.equals("warpCount")) {
 					results.add(key);
 				}

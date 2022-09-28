@@ -24,6 +24,9 @@ public class homeTabComplete  implements TabCompleter {
 
 			List<String> homes = new ArrayList<String>();
 			for (String home : playerConfigData.getKeys(false)){
+				if (home == null) {
+					homes.add("No homes found");
+				}else
 				if (!home.equals("homeCount")){
 					homes.add(home);
 

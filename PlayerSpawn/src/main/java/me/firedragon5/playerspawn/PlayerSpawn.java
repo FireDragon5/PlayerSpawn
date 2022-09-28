@@ -2,6 +2,7 @@ package me.firedragon5.playerspawn;
 
 import me.firedragon5.commands.*;
 import me.firedragon5.events.JoinEvent;
+import me.firedragon5.gui.playerHomesMenu;
 import me.firedragon5.gui.spawnMenu;
 import me.firedragon5.tabcomplete.homeTabComplete;
 import me.firedragon5.tabcomplete.warpTabComplete;
@@ -22,9 +23,12 @@ public final class PlayerSpawn extends JavaPlugin {
 		getCommand("warp").setExecutor(new warpCommand());
 		getCommand("setwarp").setExecutor(new createWarp());
 		getCommand("spawnmenu").setExecutor(new spawnMenuCommand());
+		getCommand("homemenu").setExecutor(new homeMenuCommand());
+		getCommand("adminhome").setExecutor(new adminHomeCommand());
 
 		getServer().getPluginManager().registerEvents(new JoinEvent(), this);
 		getServer().getPluginManager().registerEvents(new spawnMenu(), this);
+		getServer().getPluginManager().registerEvents(new playerHomesMenu(), this);
 
 		getCommand("home").setTabCompleter(new homeTabComplete());
 		getCommand("warp").setTabCompleter(new warpTabComplete());
