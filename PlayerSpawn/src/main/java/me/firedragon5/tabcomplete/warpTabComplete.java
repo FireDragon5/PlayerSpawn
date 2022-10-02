@@ -17,7 +17,7 @@ public class warpTabComplete implements TabCompleter {
 
 		Player player = (Player) sender;
 
-		File serverWarp = new File("plugins/PlayerSpawn/ServerSpawn/"  + "warp.yml");
+		File serverWarp = new File("plugins/PlayerSpawn/ServerSpawn/warp.yml");
 		FileConfiguration serverWarpData = YamlConfiguration.loadConfiguration(serverWarp);
 
 
@@ -28,11 +28,11 @@ public class warpTabComplete implements TabCompleter {
 			for (String key : serverWarpData.getKeys(false)) {
 				if (key == null) {
 					results.add("No warps found");
-				}else
-				if (!key.equals("warpCount")) {
+				}else{
 					results.add(key);
 				}
 			}
+			return results;
 
 		}
 

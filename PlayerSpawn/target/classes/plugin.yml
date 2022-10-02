@@ -1,36 +1,128 @@
 name: PlayerSpawn
-version: '1.0'
+version: '1.0.0'
 main: me.firedragon5.playerspawn.PlayerSpawn
 api-version: 1.19
 
 
+permissions:
+    playerspawn.*:
+        children:
+                playerspawn.spawn: true
+                playerspawn.home: true
+                playerspawn.sethome: true
+                playerspawn.delhome: true
+                playerspawn.setspawn: true
+                playerspawn.warp: true
+                playerspawn.setwarp: true
+                playerspawn.delwarp: true
+                playerspawn.spawn.others: true
+                playerspawn.home.others: true
+#                playerspawn.sethome.others: true
+                playerspawn.reload: true
+                playerspawn.bypass.join: true
+                playerspawn.bypass.delay: true+
+
+
+
+    playerspawn.spawn:
+        description: Allows the player to use /spawn
+        default: true
+    playerspawn.setspawn:
+        description: Allows the player to use /setspawn
+        default: op
+    playerspawn.home:
+        description: Allows the player to use /home
+        default: true
+    playerspawn.sethome:
+        description: Allows the player to use /sethome
+        default: true
+    playerspawn.delhome:
+        description: Allows the player to use /delhome
+        default: true
+    playerspawn.warp:
+        description: Allows the player to use /warp
+        default: true
+    playerspawn.setwarp:
+        description: Allows the player to use /setwarp
+        default: op
+    playerspawn.delwarp:
+        description: Allows the player to use /delwarp
+        default: true
+    playerspawn.spawn.others:
+        description: Allows the player to use /spawn <player>
+        default: op
+    playerspawn.home.others:
+        description: Allows the player to use /home <player>
+        default: op
+    playerspawn.warp.others:
+        description: Allows the player to use /warp <player>
+        default: op
+    playerspawn.reload:
+        description: Allows the player to use /spawnreload
+        default: op
+    playerspawn.bypass.join:
+        description: Allows the player to bypass the spawn on join.
+        default: op
+    playerspawn.bypass.delay:
+        description: Allows the player to bypass the spawn delay.
+        default: op
+
+
 commands:
+    spawnreload:
+        description: Reloads the config
+        permission-message: You do not have permission to do this!
+
     setspawn:
+        description: Sets the spawn
+        permission-message: You do not have permission to do this!
 
     spawn:
+        description: Teleports you to spawn
+        permission-message: You do not have permission to do this!
 
 
     sethome:
+        description: Sets your home
+        permission-message: You do not have permission to do this!
 
 
     home:
+        description: Teleports you to your home
+        permission-message: You do not have permission to do this!
 
 
     homehelp:
+        description: Shows the home commands
+        permission-message: You do not have permission to do this!
 
 
     delhome:
+        description: Deletes your home
+        permission-message: You do not have permission to do this!
 
 
     setwarp:
+        description: Sets a warp
+        permission-message: You do not have permission to do this!
 
 
     homelist:
+        description: Lists your homes
+        permission-message: You do not have permission to do this!
 
     warp:
+        description: Teleports you to a warp
+        permission-message: You do not have permission to do this!
 
     homemenu:
+        description: Opens the home menu
+        permission-message: You do not have permission to do this!
 
     adminhome:
+        description: Teleports you to a player's home
+        permission-message: You do not have permission to do this!
 
     spawnmenu:
+        description: Opens the spawn menu
+        permission-message: You do not have permission to do this!

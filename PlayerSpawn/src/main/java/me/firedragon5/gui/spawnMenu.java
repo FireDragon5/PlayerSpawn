@@ -7,6 +7,7 @@ import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -31,39 +32,80 @@ public class spawnMenu implements Listener {
 
 
 	public void createMenu(Player player) {
-		inv = Bukkit.createInventory(null, 9, "Spawn Menu Admin");
-
-		ItemStack spawn = new ItemStack(Material.BEEF);
-		ItemMeta spawnmeta = spawn.getItemMeta();
-
-		spawnmeta.setDisplayName("Spawn");
-		List<String> lore = new ArrayList<>();
-		lore.add(utils.color("&aTeleport to spawn"));
-
-		lore.add(utils.color("&6&lYou can also use the command /spawn!"));
-		spawnmeta.setLore(lore);
-
-		spawn.setItemMeta(spawnmeta);
-		inv.setItem(0, spawn);
+		inv = Bukkit.createInventory(null, 54, "Spawn Menu Admin");
 
 
 		ItemStack setspawn = new ItemStack(Material.LIGHT_WEIGHTED_PRESSURE_PLATE);
 		ItemMeta setspawnmeta = setspawn.getItemMeta();
 
-		setspawnmeta.setDisplayName("Spawn Menu");
+		setspawnmeta.setDisplayName(utils.color("&b&lSet Spawn"));
 		List<String> setspawnlore = new ArrayList<>();
 		setspawnlore.add(utils.color("&6&lSet spawn"));
 		setspawnmeta.setLore(setspawnlore);
 
 		setspawn.setItemMeta(setspawnmeta);
-		inv.setItem(4, setspawn);
+		inv.setItem(13, setspawn);
+
+		ItemStack setwarp = new ItemStack(Material.APPLE);
+		ItemMeta setwarpmeta = setwarp.getItemMeta();
+
+		setwarpmeta.setDisplayName(utils.color("&b&lSet Warp"));
+		List<String> setwarplore = new ArrayList<>();
+		setwarplore.add(utils.color("&6&lSet warp"));
+		setwarpmeta.setLore(setwarplore);
+
+		setwarp.setItemMeta(setwarpmeta);
+		inv.setItem(16, setwarp);
+
+
+		ItemStack thanks = new ItemStack(Material.ENCHANTED_GOLDEN_APPLE);
+		ItemMeta thanksmeta = thanks.getItemMeta();
+
+		thanksmeta.setDisplayName(utils.color("&b&lThanks for using PlayerSpawn!"));
+		List<String> thankslore = new ArrayList<>();
+		thankslore.add(utils.color("&6&lThanks for using this plugin!"));
+		thankslore.add(utils.color("&c&lYour version: " + utils.getPluginVersion()));
+		thankslore.add(utils.color("&a&lNew version: " + utils.getLatestVersion()));
+		thanksmeta.setLore(thankslore);
+
+//		thanks.addEnchantment(Enchantment.DURABILITY, 1);
+		thanks.setItemMeta(thanksmeta);
+
+		inv.setItem(53, thanks);
+
+
+//		Adding plain glass panes to the menu to make it look nicer
+
+		ItemStack glass = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+		ItemMeta glassmeta = glass.getItemMeta();
+
+		glassmeta.setDisplayName(utils.color(""));
+
+
+		glass.setItemMeta(glassmeta);
+
+//		Want numbers 0-53, but not 10, 13, 16, 53
+
+		for (int i = 0; i < 54; i++) {
+
+//			String list of all the numbers that should not be glass
+
+			String[] notGlass = {"13", "16", "53"};
+
+			String glassNumber = Integer.toString(i);
+
+			if (glassNumber.equals(notGlass[0]) || glassNumber.equals(notGlass[1])
+					|| glassNumber.equals(notGlass[2])) {
+				continue;
+			} else {
+				inv.setItem(i, glass);
+			}
+		}
+
 
 		player.openInventory(inv);
 
 	}
-
-
-
 
 
 	@EventHandler
@@ -73,13 +115,18 @@ public class spawnMenu implements Listener {
 			Player player = (Player) event.getWhoClicked();
 			ItemStack clicked = event.getCurrentItem();
 			if(clicked == null || clicked.getType() == Material.AIR) return;
-			if(clicked.getItemMeta().getDisplayName().equalsIgnoreCase("Spawn")){
-				player.performCommand("spawn");
+
+			if(clicked.getItemMeta().getDisplayName().equalsIgnoreCase("&b&lSet Spawn")){
+				player.performCommand("setspawn");
 
 			}
-			if(clicked.getItemMeta().getDisplayName().equalsIgnoreCase("Set Spawn")){
-				player.performCommand("setspawn");
+
+//			If the player clicks the warp item, it will type the command /setwarp in chat for them
+			if(clicked.getItemMeta().getDisplayName().equalsIgnoreCase("&b&lSet Warp")){
+				player.performCommand("setwarp");
 			}
+
+
 		}
 	}
 

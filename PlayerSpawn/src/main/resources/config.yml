@@ -1,1 +1,49 @@
-spawnPoints:
+# Force spawn on player join.
+forceSpawn: true
+
+
+#Spawn village on /setspawn
+#This is still in development!
+spawnVillager: true
+
+
+# Permission Message
+noPermissionMessage: "&cYou do not have permission to do this!"
+
+#Spawn Prefix.
+prefix: "§8[§bSpawn§8]"
+
+
+#Home Message
+homeName-error: "{prefix} &cYou do not have a {home} set!"
+homeName-exists: "{prefix} &cYou already have a {home} set!"
+homeName-set: "{prefix} &aYou have set your {home}!"
+homeDeleted: "{prefix} &aYou have deleted your {home}!"
+homeDoesntExist: "{prefix} &cYou do not have a {home} set!"
+homeTeleportMessage: "{prefix} &aYou have been teleported to your {home}!"
+
+
+# Spawn Message
+spawnSetMessage: "{prefix} &aSpawn has been set!"
+spawn-message: "{prefix} &aYou have been teleported to spawn!"
+spawn-others-message: "{prefix} &aYou have teleported {player} to spawn!"
+firstSpawnMessage: "{prefix} &aWelcome to the server! You have been teleported to spawn!"
+
+#Warp Message
+warpCreateUsage: "{prefix} &cUsage: /setwarp <name>"
+warpAlreadyExists: "{prefix} &cThis warp already exists!"
+warpCreated: "{prefix} &aYou have created a warp called {warp}!"
+
+
+#Disable/ Enable the teleportDelay
+wantDelay: true
+
+#Time it takes to teleport.
+#This is in seconds.
+teleportDelay: 5 #seconds
+
+
+
+#Please don't change this!
+
+configVersion: 1
