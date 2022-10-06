@@ -15,8 +15,11 @@ import me.firedragon5.gui.spawnMenu;
 import me.firedragon5.tabcomplete.groupTabComplete;
 import me.firedragon5.tabcomplete.homeTabComplete;
 import me.firedragon5.tabcomplete.warpTabComplete;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.File;
 
 public final class PlayerSpawn extends JavaPlugin {
 
@@ -28,13 +31,25 @@ public final class PlayerSpawn extends JavaPlugin {
 
 //	Check the version of the config file
 
-	private void checkConfigVersion() {
-		if (getConfig().getInt("configVersion") != 1) {
-			getLogger().warning("The config file is outdated! " +
-					"Please delete it and restart the server to generate a new one.");
-		}
-	}
+	public void checkConfig(){
 
+		File file = new File(getDataFolder(), "config.yml");
+		YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
+
+
+		if(config.getDouble("Config_Version") != 1.1 || !config.contains("Config_Version")){
+			getLogger().info("Config is outdated, updating...");
+//			Add the new content form the internal config file to the config file
+
+			saveResource("config.yml", true);
+			getLogger().info("Config has been updated to the latest version!");
+
+
+		}
+
+
+
+	}
 
 	@Override
 	public void onEnable() {
@@ -42,7 +57,7 @@ public final class PlayerSpawn extends JavaPlugin {
 //		Config
 		instance = this;
 
-		checkConfigVersion();
+		checkConfig();
 
 		getConfig().options().copyDefaults();
 		this.saveDefaultConfig();
